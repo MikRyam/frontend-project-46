@@ -24,7 +24,8 @@ gendiff -h
 
 
 ### Demo: installing a package, getting help info, launching genDiff
-[![asciicast](https://asciinema.org/a/7aSCJTf9p88GW4IV0L3Y1yYVk.svg)](https://asciinema.org/a/7aSCJTf9p88GW4IV0L3Y1yYVk)
+[![asciicast](https://asciinema.org/a/nhG0khw7VAMpue3BxDDLsG2I5.svg)](https://asciinema.org/a/nhG0khw7VAMpue3BxDDLsG2I5)
+
 
 
 ## launching genDiff 

@@ -8,12 +8,7 @@ install:
 publish:
 	npm publish --dry-run
 
-#setup: install publish
+setup: install publish
 
 link:
-	sudo npm link
-
-setup:
-	chmod +x bin/gendiff.js
-	make publish
 	sudo npm link

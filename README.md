@@ -22,9 +22,16 @@ make publish
 
 sudo npm link
 ```
+
 ## Run tests
 
 ```make test```
+
+
+## Run lint
+
+```make lint```
+
 
 ## genDiff Help
 

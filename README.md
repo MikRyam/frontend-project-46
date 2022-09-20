@@ -22,6 +22,9 @@ make publish
 
 sudo npm link
 ```
+## Run tests
+
+```make test```
 
 ## genDiff Help
 
@@ -40,4 +43,15 @@ gendiff -h
 
 ```
 gendiff file1.json file2.json
+```
+
+### Demo: run genDiff with different file .formats
+[![asciicast](https://asciinema.org/a/lq8eMzOipYGm4bJuGeyovnT3c.svg)](https://asciinema.org/a/lq8eMzOipYGm4bJuGeyovnT3c)
+
+
+```
+gendiff __fixtures__/file1.json __fixtures__/file2.json
+
+gendiff __fixtures__/file1.yml __fixtures__/file2.yml
+
 ```

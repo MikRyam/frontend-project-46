@@ -8,6 +8,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/224d9c374a705ba5cc35/test_coverage)](https://codeclimate.com/github/MikRyam/frontend-project-46/test_coverage)
 
 
+
 ## Install
 
 ```make install```

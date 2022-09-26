@@ -10,13 +10,18 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test('genDiff_test_json', () => {
-  const expected = readFile('expected_file.txt');
+  const expected = readFile('expected_file_stylish.txt');
   const actual = gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
-  expect(actual).toBe(expected);
+  expect(actual).toEqual(expected);
 });
 
 test('genDiff_test_yml', () => {
-  const expected = readFile('expected_file.txt');
+  const expected = readFile('expected_file_stylish.txt');
   const actual = gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
-  expect(actual).toBe(expected);
+  expect(actual).toEqual(expected);
+});
+test('genDiff_test_plain_format', () => {
+  const expected = readFile('expected_file_plain.txt');
+  const actual = gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
+  expect(actual).toEqual(expected);
 });

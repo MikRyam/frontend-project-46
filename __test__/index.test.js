@@ -15,8 +15,8 @@ test('genDiff_test_json', () => {
   expect(actual).toBe(expected);
 });
 
-// test('genDiff_test_yml', () => {
-//   const expected = readFile('expected_file.txt');
-//   const actual = gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
-//   expect(actual).toBe(expected);
-// });
+test('genDiff_test_yml', () => {
+  const expected = readFile('expected_file.txt');
+  const actual = gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
+  expect(actual).toBe(expected);
+});

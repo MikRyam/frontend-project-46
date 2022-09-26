@@ -21,7 +21,7 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const data2 = parse(rawData2, getFormat(filepath2));
 
   const diff = buildTreeAST(data1, data2);
-  const formattedTree = makeStylish(diff, format);
+  const formattedTree = makeStylish(diff);
   return formattedTree;
 };
 

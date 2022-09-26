@@ -1,8 +1,8 @@
 ### Hexlet tests and linter status:
-[!![Actions Status](https://github.com/MikRyam/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/MikRyam/frontend-project-46/actions)
-!![example workflow](https://github.com/MikRyam/frontend-project-46/actions/workflows/project2-check.yml/badge.svg)
-[!![Maintainability](https://api.codeclimate.com/v1/badges/224d9c374a705ba5cc35/maintainability)](https://codeclimate.com/github/MikRyam/frontend-project-46/maintainability)
-[!![Test Coverage](https://api.codeclimate.com/v1/badges/224d9c374a705ba5cc35/test_coverage)](https://codeclimate.com/github/MikRyam/frontend-project-46/test_coverage)
+[![Actions Status](https://github.com/MikRyam/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/MikRyam/frontend-project-46/actions)
+![example workflow](https://github.com/MikRyam/frontend-project-46/actions/workflows/project2-check.yml/badge.svg)
+[ [Maintainability](https://api.codeclimate.com/v1/badges/224d9c374a705ba5cc35/maintainability)](https://codeclimate.com/github/MikRyam/frontend-project-46/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/224d9c374a705ba5cc35/test_coverage)](https://codeclimate.com/github/MikRyam/frontend-project-46/test_coverage)
 
 # Description:
 **Generator of difference** is the CLI program that generate difference between two files. Supporting formats: JSON, YML, YAML.

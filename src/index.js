@@ -13,7 +13,7 @@ const readFile = (filePath) => {
 
 const getFormat = (file) => path.extname(file);
 
-const gendiff = (filepath1, filepath2, format = 'stylish') => {
+const gendiff = (filepath1, filepath2) => {
   const rawData1 = readFile(filepath1);
   const rawData2 = readFile(filepath2);
 

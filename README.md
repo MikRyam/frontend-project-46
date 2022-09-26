@@ -70,3 +70,8 @@ gendiff __fixtures__/file1.yml __fixtures__/file2.yml
 ### Demo: run genDiff with nested structures files in plain format
 [![asciicast](https://asciinema.org/a/QBiS06GQoiiBTKVwzlkqshncG.svg)](https://asciinema.org/a/QBiS06GQoiiBTKVwzlkqshncG)
 
+
+
+### Demo: run genDiff with nested structures files in json format
+[![asciicast](https://asciinema.org/a/9fYK9rn63SXYO6zga9n3x7Yth.svg)](https://asciinema.org/a/9fYK9rn63SXYO6zga9n3x7Yth)
+

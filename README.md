@@ -60,3 +60,8 @@ gendiff __fixtures__/file1.json __fixtures__/file2.json
 gendiff __fixtures__/file1.yml __fixtures__/file2.yml
 
 ```
+
+
+### Demo: run genDiff with nested structures files
+[![asciicast](https://asciinema.org/a/UjmW2NM2VAfMxc3UhaBwImcGm.svg)](https://asciinema.org/a/UjmW2NM2VAfMxc3UhaBwImcGm)
+

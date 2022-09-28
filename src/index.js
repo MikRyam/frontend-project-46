@@ -11,7 +11,7 @@ const readFile = (filePath) => {
   return rawData;
 };
 
-const getFormat = (file) => path.extname(file);
+const getFormat = (file) => path.extname(file).split('.').pop();
 
 const gendiff = (filepath1, filepath2, formatName = 'stylish') => {
   const rawData1 = readFile(filepath1);

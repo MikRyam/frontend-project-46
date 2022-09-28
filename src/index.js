@@ -13,7 +13,7 @@ const readFile = (filePath) => {
 
 const getFormat = (file) => path.extname(file).slice(1);
 
-const gendiff = (filepath1, filepath2, formatName = 'stylish') => {
+const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const rawData1 = readFile(filepath1);
   const rawData2 = readFile(filepath2);
 
@@ -21,7 +21,7 @@ const gendiff = (filepath1, filepath2, formatName = 'stylish') => {
   const data2 = parse(rawData2, getFormat(filepath2));
 
   const diff = buildTreeAST(data1, data2);
-  const formattedData = getFormattedData(diff, formatName);
+  const formattedData = getFormattedData(diff, format);
   return formattedData;
 };
 

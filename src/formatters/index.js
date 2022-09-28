@@ -2,8 +2,8 @@ import makePlain from './plain.js';
 import makeStylish from './stylish.js';
 import makeJson from './json.js';
 
-const getFormattedData = (data, formatName) => {
-  switch (formatName) {
+const getFormattedData = (data, format) => {
+  switch (format) {
     case 'stylish':
       return makeStylish(data);
     case 'plain':
@@ -11,7 +11,7 @@ const getFormattedData = (data, formatName) => {
     case 'json':
       return makeJson(data);
     default:
-      throw new Error(`Invalid file format type: '.${formatName}'! Try supported file formats. Use "gendiff -h" to see all options.`);
+      throw new Error(`Invalid file format type: '.${format}'! Try supported file formats. Use "gendiff -h" to see all options.`);
   }
 };
 

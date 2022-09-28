@@ -1,3 +1,4 @@
 # Игнорируется директория в любой директории проекта
-node_modules
-coverage
+node_modules/
+coverage/
+.idea/

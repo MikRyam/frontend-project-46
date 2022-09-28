@@ -1,8 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/MikRyam/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/MikRyam/frontend-project-46/actions)",
-
+  "description": "Project_2. Generator of difference is the CLI program that generate difference between two files. Supporting formats: JSON, YML, YAML.",
   "main": "src/index.js",
   "type": "module",
   "bin": {
@@ -24,8 +23,7 @@
   "dependencies": {
     "commander": "^9.4.0",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21",
-    "process": "^0.11.10"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.23.1",

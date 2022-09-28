@@ -12,7 +12,7 @@ const getValue = (data, depth = 0) => {
 };
 
 const operatorsMap = {
-  equal: ' ',
+  unchanged: ' ',
   added: '+',
   changed: '-',
   removed: '-',
@@ -21,10 +21,10 @@ const operatorsMap = {
 const makeStylish = (data, depth = 0) => {
   const result = data.map((item) => {
     const {
-      key, value, value1, value2, type,
+      key, children, value, value1, value2, type,
     } = item;
     switch (type) {
-      case 'equal':
+      case 'unchanged':
         return `${getDepth(depth + 1)}  ${key}: ${getValue(value, depth + 2)}`;
       case 'added':
         return `${getDepth(depth + 1)}${operatorsMap.added} ${key}: ${getValue(value, depth + 2)}`;
@@ -33,9 +33,9 @@ const makeStylish = (data, depth = 0) => {
       case 'changed':
         return `${getDepth(depth + 1)}${operatorsMap.changed} ${key}: ${getValue(value1, depth + 2)}\n${getDepth(depth + 1)}${operatorsMap.added} ${key}: ${getValue(value2, depth + 2)}`;
       case 'nested':
-        return `${getDepth(depth + 1)}  ${key}: ${makeStylish(value, depth + 2)}`;
+        return `${getDepth(depth + 1)}  ${key}: ${makeStylish(children, depth + 2)}`;
       default:
-        throw new Error(`${type} - is unknown active`);
+        throw new Error(`${type} - is unknown type`);
     }
   });
   return `{\n${result.join('\n')}\n${getDepth(depth)}}`;

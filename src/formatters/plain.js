@@ -13,7 +13,7 @@ const makePlain = (diff) => {
     const path = [...parent, node.key].join('.');
 
     switch (node.type) {
-      case 'equal':
+      case 'unchanged':
         return [];
       case 'added':
         return `Property '${path}' was added with value: ${getValue(node.value)}`;
@@ -22,7 +22,7 @@ const makePlain = (diff) => {
       case 'changed':
         return `Property '${path}' was updated. From ${getValue(node.value1)} to ${getValue(node.value2)}`;
       case 'nested':
-        return `${iter(node.value, [path]).join('\n')}`;
+        return `${iter(node.children, [path]).join('\n')}`;
       default:
         throw new Error(`Type: ${node.state} is undefined`);
     }

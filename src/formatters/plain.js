@@ -1,10 +1,9 @@
 import _ from 'lodash';
 
-const getValue = (value) => {
+const stringify = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
-
   return _.isString(value) ? `'${value}'` : value;
 };
 
@@ -16,11 +15,11 @@ const makePlain = (diff) => {
       case 'unchanged':
         return [];
       case 'added':
-        return `Property '${path}' was added with value: ${getValue(node.value)}`;
+        return `Property '${path}' was added with value: ${stringify(node.value)}`;
       case 'removed':
         return `Property '${path}' was removed`;
       case 'changed':
-        return `Property '${path}' was updated. From ${getValue(node.value1)} to ${getValue(node.value2)}`;
+        return `Property '${path}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
       case 'nested':
         return `${iter(node.children, [path]).join('\n')}`;
       default:

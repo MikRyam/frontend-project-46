@@ -1,29 +1,34 @@
 import _ from 'lodash';
 
-const getDepth = (depth, indent = 4) => ' '.repeat(depth * indent - 2);
+const replacer = ' ';
+const indent = 4;
+const getIndent = (depth) => replacer.repeat(depth * indent - 2);
 
-const getValue = (data, depth = 0) => {
+const stringify = (data, depth) => {
   if (!_.isPlainObject(data) || data === null) {
     return String(data);
   }
   const entries = Object.entries(data);
-  const values = entries.map(([key, value]) => `${getDepth(depth)}  ${key}: ${getValue(value, depth + 1)}`);
-  return `{\n${values.join('\n')}\n${getDepth(depth - 1)}  }`;
+  const values = entries.map(([key, value]) => `${getIndent(depth)}  ${key}: ${stringify(value, depth + 1)}`);
+  return `{\n${values.join('\n')}\n${getIndent(depth - 1)}  }`;
 };
 
 const makeStylish = (diff) => {
   const iter = (data, depth) => data.map((node) => {
     switch (node.type) {
       case 'unchanged':
-        return `${getDepth(depth)}  ${node.key}: ${getValue(node.value, depth + 1)}`;
+        return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;
       case 'added':
-        return `${getDepth(depth)}+ ${node.key}: ${getValue(node.value, depth + 1)}`;
+        return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
       case 'removed':
-        return `${getDepth(depth)}- ${node.key}: ${getValue(node.value, depth + 1)}`;
+        return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
       case 'changed':
-        return `${getDepth(depth)}- ${node.key}: ${getValue(node.value1, depth + 1)}\n${getDepth(depth)}+ ${node.key}: ${getValue(node.value2, depth + 1)}`;
+        return [
+          `${getIndent(depth)}- ${node.key}: ${stringify(node.value1, depth + 1)}`,
+          `${getIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`,
+        ].join('\n');
       case 'nested':
-        return `${getDepth(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('\n')}\n${getDepth(depth)}  }`;
+        return `${getIndent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('\n')}\n${getIndent(depth)}  }`;
       default:
         throw new Error(`${node.type} - is unknown type`);
     }

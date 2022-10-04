@@ -19,7 +19,6 @@ describe('All tests', () => {
   test.each(extensions)('Format %s', (extension) => {
     const file1 = getFixturePath(`file1.${extension}`);
     const file2 = getFixturePath(`file2.${extension}`);
-   
 
     expect(gendiff(file1, file2)).toEqual(expectedStylish);
     expect(gendiff(file1, file2, 'stylish')).toEqual(expectedStylish);

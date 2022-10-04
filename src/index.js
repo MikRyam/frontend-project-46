@@ -13,8 +13,8 @@ const getData = (filePath) => {
 
 const getExtname = (file) => path.extname(file).slice(1);
 
-const gendiff = (filepath1, filepath2, format = 'stylish') => {  
-  const data1 = parse(getData(filepath1), getExtname(filepath1)); 
+const gendiff = (filepath1, filepath2, format = 'stylish') => {
+  const data1 = parse(getData(filepath1), getExtname(filepath1));
   const data2 = parse(getData(filepath2), getExtname(filepath2));
 
   const diff = buildTree(data1, data2);

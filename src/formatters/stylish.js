@@ -5,7 +5,7 @@ const indent = 4;
 const getIndent = (depth) => replacer.repeat(depth * indent - 2);
 
 const stringify = (data, depth) => {
-  if (!_.isPlainObject(data) || data === null) {
+  if (!_.isObject(data) || data === null) {
     return String(data);
   }
   const entries = Object.entries(data);

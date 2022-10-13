@@ -24,7 +24,7 @@ const cases = [
 
 describe('All tests', () => {
   test.each(cases)('Format %s', (file1, file2, format, expectedFile) => {
-    const actual = gendiff(getFixturePath(file1), getFixturePath(file2), format);    
+    const actual = gendiff(getFixturePath(file1), getFixturePath(file2), format);
     expect(actual).toEqual(expectedFile);
   });
 });

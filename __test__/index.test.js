@@ -14,29 +14,17 @@ const expectedPlain = readFile('expectedPlain.txt');
 const expectedJson = readFile('expectedJson.txt');
 
 const cases = [
-  ['file1.json', 'file2.json'],
-  ['file1.yaml', 'file2.yaml', 'stylish'],
-  ['file1.json', 'file2.json', 'plain'],
-  ['file1.yaml', 'file2.yaml', 'plain'],
-  ['file1.json', 'file2.json', 'json'],
-  ['file1.yaml', 'file2.yaml', 'json'],
+  ['file1.json', 'file2.json', 'stylish', expectedStylish],
+  ['file1.yaml', 'file2.yaml', 'stylish', expectedStylish],
+  ['file1.json', 'file2.json', 'plain', expectedPlain],
+  ['file1.yaml', 'file2.yaml', 'plain', expectedPlain],
+  ['file1.json', 'file2.json', 'json', expectedJson],
+  ['file1.yaml', 'file2.yaml', 'json', expectedJson],
 ];
 
 describe('All tests', () => {
-  test.each(cases)('Format %s', (file1, file2, format = 'stylish') => {
-    const actual = gendiff(getFixturePath(file1), getFixturePath(file2), format);
-    const expected = (style) => {
-      switch (style) {
-        case 'stylish':
-          return expectedStylish;
-        case 'plain':
-          return expectedPlain;
-        case 'json':
-          return expectedJson;
-        default:
-          return expectedStylish;
-      }
-    };
-    expect(actual).toEqual(expected(format));
+  test.each(cases)('Format %s', (file1, file2, format, expectedFile) => {
+    const actual = gendiff(getFixturePath(file1), getFixturePath(file2), format);    
+    expect(actual).toEqual(expectedFile);
   });
 });

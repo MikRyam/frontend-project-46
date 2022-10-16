@@ -13,27 +13,26 @@ const stringify = (data, depth) => {
   return `{\n${values.join('\n')}\n${getIndent(depth - 1)}  }`;
 };
 
-const makeStylish = (diff) => {
-  const iter = (data, depth) => data.map((node) => {
-    switch (node.type) {
-      case 'unchanged':
-        return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;
-      case 'added':
-        return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
-      case 'removed':
-        return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
-      case 'changed':
-        return [
-          `${getIndent(depth)}- ${node.key}: ${stringify(node.value1, depth + 1)}`,
-          `${getIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`,
-        ].join('\n');
-      case 'nested':
-        return `${getIndent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1).join('\n')}\n${getIndent(depth)}  }`;
-      default:
-        throw new Error(`${node.type} - is unknown type`);
-    }
-  });
-  return `{\n${iter(diff, 1).join('\n')}\n}`;
+const makeStylish = (node, depth = 0) => {
+  switch (node.type) {
+    case 'root':
+      return `{\n${node.children.map((child) => makeStylish(child, depth + 1)).join('\n')}\n}`;
+    case 'unchanged':
+      return `${getIndent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;
+    case 'added':
+      return `${getIndent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
+    case 'removed':
+      return `${getIndent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
+    case 'changed':
+      return [
+        `${getIndent(depth)}- ${node.key}: ${stringify(node.value1, depth + 1)}`,
+        `${getIndent(depth)}+ ${node.key}: ${stringify(node.value2, depth + 1)}`,
+      ].join('\n');
+    case 'nested':
+      return `${getIndent(depth)}  ${node.key}: {\n${node.children.map((child) => makeStylish(child, depth + 1)).join('\n')}\n${getIndent(depth)}  }`;
+    default:
+      throw new Error(`${node.type} - is unknown type`);
+  }
 };
 
 export default makeStylish;

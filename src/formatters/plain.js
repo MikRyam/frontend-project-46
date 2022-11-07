@@ -11,7 +11,11 @@ const makePlain = (node, parent = []) => {
   const path = [...parent, node.key].join('.');
   switch (node.type) {
     case 'root':
-      return _.compact(node.children.map((child) => makePlain(child, []))).join('\n');
+      // return _.compact(node.children.map((child) => makePlain(child, []))).join('\n');
+      return (node.children
+        .map((child) => makePlain(child, [])))
+        .filter((item) => item !== null)
+        .join('\n');
     case 'unchanged':
       return null;
     case 'added':
@@ -21,7 +25,12 @@ const makePlain = (node, parent = []) => {
     case 'changed':
       return `Property '${path}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
     case 'nested':
-      return _.compact(node.children.map((child) => makePlain(child, [path]))).join('\n');
+      // return _.compact(node.children.map((child) => makePlain(child, [path]))).join('\n');
+      return (node.children
+        .map((child) => makePlain(child, [path])))
+        .filter((item) => item !== null)
+        .join('\n');
+
     default:
       throw new Error(`Type: ${node.type} is undefined`);
   }
